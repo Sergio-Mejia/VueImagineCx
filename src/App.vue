@@ -1,10 +1,28 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+
+    <a v-on:click="loadContact"> Contacts </a>
+
   </nav>
-  <router-view/>
+  <router-view />
 </template>
+
+<script>
+
+export default {
+  name: 'App',
+  components: {
+
+  },
+  methods: {
+    loadContact: function () {
+      this.$router.push({ name: 'contact' });
+    }
+  }
+}
+
+</script>
 
 <style>
 #app {
