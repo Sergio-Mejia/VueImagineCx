@@ -14,11 +14,14 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" v-on:click="loadContact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contacts
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" v-on:click="loadContact">Get Contact by Id</a></li>
+              <li><a class="dropdown-item" v-on:click="loadContactDelete">Delete Contact</a></li>
+            </ul>
           </li>
         </ul>
         <span class="navbar-text">
@@ -41,7 +44,10 @@ export default {
   methods: {
     loadContact: function () {
       this.$router.push({ name: 'contact' });
-    }
+    },
+    loadContactDelete: function () {
+      this.$router.push({ name: 'deleteContact' });
+    },
   }
 }
 
@@ -53,25 +59,27 @@ export default {
   text-align: center;
 }
 
-.navbar{
+.navbar {
   background-color: #2b2d2e;
 }
-.navbar .navbar-text{
-  color: #e69a0f;
-}
-.navbar .nav-link{
+
+.navbar .navbar-text {
   color: #e69a0f;
 }
 
-.navbar .nav-link:hover{
+.navbar .nav-link {
+  color: #e69a0f;
+}
+
+.navbar .nav-link:hover {
   color: #6d4f19;
 }
-.navbar .navbar-brand:hover{
+
+.navbar .navbar-brand:hover {
   color: #6d4f19;
 }
 
-.navbar .navbar-brand{
+.navbar .navbar-brand {
   color: #e69a0f;
 }
-
 </style>
