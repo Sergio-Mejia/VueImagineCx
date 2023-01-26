@@ -1,10 +1,33 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
 
-    <a v-on:click="loadContact"> Contacts </a>
-
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" id="nav-text-color">
+        <img src="./assets/LogoImagine.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-center">
+        ImagineCx
+      </a>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: orange;">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" v-on:click="loadContact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          Sergio Daniel Mejia Carvajal
+        </span>
+      </div>
+    </div>
   </nav>
+
   <router-view />
 </template>
 
@@ -26,23 +49,29 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
-  color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+.navbar{
+  background-color: #2b2d2e;
+}
+.navbar .navbar-text{
+  color: #e69a0f;
+}
+.navbar .nav-link{
+  color: #e69a0f;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.navbar .nav-link:hover{
+  color: #6d4f19;
+}
+.navbar .navbar-brand:hover{
+  color: #6d4f19;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.navbar .navbar-brand{
+  color: #e69a0f;
 }
+
 </style>
