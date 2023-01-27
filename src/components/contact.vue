@@ -17,6 +17,17 @@
                 <td>{{ item }}</td>
             </tr>
         </table>
+
+        <div class="centrar">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h3 class="card-title">{{ nombre }}</h3>
+                    <h4 class="card-subtitle mb-2 text-muted">{{ ciudad }}</h4>
+                    <p class="card-text">{{ direccion }}</p>
+                    <p class="card-text">{{ job }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -31,7 +42,11 @@ export default {
     data: function () {
         return {
             contacts: [],
-            contact : {
+            nombre: "",
+            ciudad: "",
+            direccion: "",
+            job: "",
+            contact: {
                 id: 0
             }
         }
@@ -44,7 +59,11 @@ export default {
             axios
                 .get(url)
                 .then((result) => {
-                    this.contacts = result.data
+                    this.nombre = result.data.name
+                    this.ciudad = result.data.city
+                    this.direccion = result.data.address
+                    this.job = result.data.work
+                    console.log(result.data.name);
                 })
                 .catch((err) => {
                     console.log('Error: ' + err);
@@ -59,6 +78,8 @@ export default {
 </script>
 
 <style>
-
-
+.centrar {
+    display: grid;
+    place-items: center;
+}
 </style>

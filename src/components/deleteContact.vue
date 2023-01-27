@@ -12,11 +12,7 @@
             <button type="submit" class="btn btn-danger">Eliminar</button>
         </form>
         <br>
-        <table class="table table-striped table-hover table-bordered">
-            <tr v-for="(item, idx) in contacts">
-                <td>{{ item }}</td>
-            </tr>
-        </table>
+        <h4>{{ msg }}</h4>
     </div>
 
 
@@ -30,7 +26,7 @@ export default {
     name: 'deleteContact',
     data: function () {
         return {
-            contacts: [],
+            msg: "",
             contact : {
                 id: 0
             }
@@ -44,7 +40,7 @@ export default {
             axios
                 .delete(url)
                 .then((result) => {
-                    this.contacts = result.data
+                    this.msg = result.data.msg
                 })
                 .catch((err) => {
                     console.log('Error: ' + err);
