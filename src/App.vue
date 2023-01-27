@@ -22,6 +22,7 @@
               <li><a class="dropdown-item" v-on:click="loadContact">Get Contact by Id</a></li>
               <li><a class="dropdown-item" v-on:click="loadContactDelete">Delete Contact</a></li>
               <li><a class="dropdown-item" v-on:click="loadContactUpdate">Update Contact</a></li>
+              <li><a class="dropdown-item" v-on:click="loadContactsAll">Get All Contacts</a></li>
             </ul>
           </li>
         </ul>
@@ -51,6 +52,9 @@ export default {
     },
     loadContactUpdate: function () {
       this.$router.push({ name: 'updateContact' });
+    },
+    loadContactsAll: function () {
+      this.$router.push({ name: 'getcontacts' });
     },
   }
 }

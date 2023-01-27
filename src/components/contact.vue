@@ -25,6 +25,7 @@
                     <h4 class="card-subtitle mb-2 text-muted">{{ ciudad }}</h4>
                     <p class="card-text">{{ direccion }}</p>
                     <p class="card-text">{{ job }}</p>
+                    <p class="card-text">{{ created }}</p>
                 </div>
             </div>
         </div>
@@ -45,6 +46,7 @@ export default {
             nombre: "",
             ciudad: "",
             direccion: "",
+            created: "",
             job: "",
             contact: {
                 id: 0
@@ -63,6 +65,7 @@ export default {
                     this.ciudad = result.data.city
                     this.direccion = result.data.address
                     this.job = result.data.work
+                    this.created = result.data.createdTime
                     console.log(result.data.name);
                 })
                 .catch((err) => {

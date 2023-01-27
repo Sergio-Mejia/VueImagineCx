@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import contact from '../components/contact.vue'
 import deleteContact from '../components/deleteContact'
 import updateContact from '../components/updateContact'
+import getcontacts from '../components/getcontacts.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/updateContact',
     name: 'updateContact',
     component: updateContact
+  },
+  {
+    path: '/getcontacts',
+    name: 'getcontacts',
+    component: getcontacts
   },
 ]
 
