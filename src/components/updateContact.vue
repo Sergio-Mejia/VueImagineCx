@@ -2,6 +2,7 @@
     <br>
     <div class="container">
         <h1>CONTACTS UPDATE</h1>
+        <br>
         <form action="" v-on:submit.prevent="updateContacts">
 
             <div class="row">
@@ -26,7 +27,7 @@
                 </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Actualizar Contacto</button>
+            <button type="submit" class="button-def">Actualizar Contacto</button>
         </form>
         <br>
         <h3>{{ msg }}</h3>

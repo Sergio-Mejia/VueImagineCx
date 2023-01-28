@@ -9,7 +9,7 @@
                 Ingresar numero identificador del contacto
             </div>
             <br>
-            <button type="submit" class="btn btn-success">Buscar</button>
+            <button type="submit" class="button-def">Buscar</button>
         </form>
         <br>
         <table class="table table-striped table-hover table-bordered">
@@ -85,4 +85,5 @@ export default {
     display: grid;
     place-items: center;
 }
+
 </style>

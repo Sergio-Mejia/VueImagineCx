@@ -1,12 +1,14 @@
 <template>
-<h1>All Contacts</h1>
-<div class="container">
-    <div>
-        <ul class="list-group">
-            {{ data }}
-        </ul>
+
+    <div class="container">
+        <br>
+        <h1>All Contacts</h1>
+        <div>
+            <ul class="list-group">
+                {{ data }}
+            </ul>
+        </div>
     </div>
-</div>
 
 </template>
 

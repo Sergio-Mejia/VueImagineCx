@@ -1,7 +1,7 @@
 <template>
     <br>
     <div class="container">
-        <h1>CONTACTS</h1>
+        <h1>DELETE CONTACTS</h1>
         <form action="" v-on:submit.prevent="deleteContacts">
             <label for="inputId" class="form-label">Identificador Contacto</label>
             <input type="number" v-model="contact.id" id="inputId" class="form-control" aria-describedby="HelpBlock">
@@ -9,7 +9,7 @@
                 Ingresar numero identificador del contacto
             </div>
             <br>
-            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <button type="submit" class="button-def">Eliminar</button>
         </form>
         <br>
         <h4>{{ msg }}</h4>

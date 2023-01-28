@@ -3,11 +3,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#" id="nav-text-color">
         <img src="./assets/LogoImagine.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-center">
-        ImagineCx
+        Imagine Cx
       </a>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: orange;">
@@ -32,7 +32,6 @@
       </div>
     </div>
   </nav>
-
   <router-view />
 </template>
 
@@ -90,4 +89,26 @@ export default {
 .navbar .navbar-brand {
   color: #e69a0f;
 }
+
+.dropdown-item{
+  cursor: pointer;
+}
+
+.container{
+  margin-top: 90px;
+}
+
+.button-def{
+    background-color: #2b2d2e;
+    border-radius: 10px;
+    border: 2px solid #2b2d2e;
+    color: #e69a0f;
+    font-size: 16px;
+    padding: 12px 30px;
+}
+
+.button-def:hover{
+    background-color: #18181a;
+}
+
 </style>
