@@ -67,7 +67,7 @@ export default {
 }
 
 .navbar {
-  background-color: #2b2d2e;
+  background-color: #2e2b2d;
 }
 
 .navbar .navbar-text {

@@ -16,6 +16,7 @@
 <script>
 import axios from 'axios';
 
+
 export default {
     name: "getcontacts",
     data: function () {
@@ -25,9 +26,13 @@ export default {
     },
     methods: {
         getContacts() {
-            const url = `http://localhost:8080/api/imaginecx/contact`;
+
+
+
+            // const url = `http://localhost:8080/api/imaginecx/contact`;
+            const url2 = `https://ICXCandidate:Welcome2022@imaginecx--tst2.custhelp.com/services/rest/connect/v1.3/contacts/36`;
             axios
-                .get(url)
+                .get(url2)
                 .then((result) => {
                     this.data = result.data
                 })

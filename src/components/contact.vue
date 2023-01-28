@@ -26,6 +26,7 @@
                     <p class="card-text">{{ direccion }}</p>
                     <p class="card-text">{{ job }}</p>
                     <p class="card-text">{{ created }}</p>
+                    <h2>{{ error }}</h2>
                 </div>
             </div>
         </div>
@@ -48,6 +49,7 @@ export default {
             direccion: "",
             created: "",
             job: "",
+            error: "",
             contact: {
                 id: 0
             }
@@ -69,7 +71,9 @@ export default {
                     console.log(result.data.name);
                 })
                 .catch((err) => {
-                    console.log('Error: ' + err);
+                    if (err.response.status === 404){
+                        this.error = `El contacto no se encuentra registrado`
+                    }
                 })
         }
     },
