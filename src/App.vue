@@ -25,6 +25,17 @@
               <li><a class="dropdown-item" v-on:click="loadContactsAll">Get All Contacts</a></li>
             </ul>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Accounts
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" v-on:click="loadgetAccount">Get Account by Id</a></li>
+              <li><a class="dropdown-item" v-on:click="loadDeleteAccounts">Delete Account</a></li>
+              <li><a class="dropdown-item" v-on:click="">Update Account</a></li>
+              <li><a class="dropdown-item" v-on:click="loadAccounts">Get All Accounts</a></li>
+            </ul>
+          </li>
         </ul>
         <span class="navbar-text">
           Sergio Daniel Mejia Carvajal
@@ -54,6 +65,15 @@ export default {
     },
     loadContactsAll: function () {
       this.$router.push({ name: 'getcontacts' });
+    },
+    loadgetAccount: function () {
+      this.$router.push({ name: 'getAccount' });
+    },
+    loadAccounts: function () {
+      this.$router.push({ name: 'Accounts' });
+    },
+    loadDeleteAccounts: function () {
+      this.$router.push({ name: 'deleteAccounts' });
     },
   }
 }
