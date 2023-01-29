@@ -36,6 +36,9 @@
               <li><a class="dropdown-item" v-on:click="loadAccounts">Get All Accounts</a></li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" v-on:click="loadCampaigns">Campaigns</a>
+          </li>
         </ul>
         <span class="navbar-text">
           Sergio Daniel Mejia Carvajal
@@ -75,6 +78,9 @@ export default {
     loadDeleteAccounts: function () {
       this.$router.push({ name: 'deleteAccounts' });
     },
+    loadCampaigns: function () {
+      this.$router.push({ name: 'campaigns' });
+    },
   }
 }
 
@@ -96,6 +102,7 @@ export default {
 
 .navbar .nav-link {
   color: #e69a0f;
+  cursor: pointer;
 }
 
 .navbar .nav-link:hover {
@@ -131,4 +138,7 @@ export default {
     background-color: #18181a;
 }
 
+.color-items{
+    color: #e69a0f;
+}
 </style>

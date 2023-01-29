@@ -3,11 +3,21 @@
     <div class="container">
         <br>
         <h1>All Accounts</h1>
-        <div>
-            <ul class="list-group">
-                {{ data }}
-            </ul>
-        </div>
+        <br>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr class="color-items">
+                    <th scope="col">#</th>
+                    <th scope="col">Usuario de la cuenta</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr  v-for="(item, idx) in data">
+                    <th scope="row" class="color-items"> {{ item.id }} </th>
+                    <td>{{ item.lookupName }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </template>
@@ -21,7 +31,7 @@ export default {
     name: "Accounts",
     data: function () {
         return {
-            data: {}
+            data: []
         }
     },
     methods: {
@@ -31,7 +41,7 @@ export default {
             axios
                 .get(url)
                 .then((result) => {
-                    this.data = result.data
+                    this.data = result.data.accounts
                 })
                 .catch((err) => {
                     this.data = err.message

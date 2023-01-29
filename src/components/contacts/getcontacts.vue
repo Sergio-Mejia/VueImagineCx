@@ -3,11 +3,24 @@
     <div class="container">
         <br>
         <h1>All Contacts</h1>
-        <div>
-            <ul class="list-group">
-                {{ data }}
-            </ul>
-        </div>
+
+        <br>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr class="color-items">
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre del Contacto</th>
+                    <th scope="col">Fecha de Creacion</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr  v-for="(item, idx) in data">
+                    <th scope="row" class="color-items"> {{ item.id }} </th>
+                    <td>{{ item.lookupName }}</td>
+                    <td>{{ item.createdTime }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </template>
@@ -21,7 +34,7 @@ export default {
     name: "getcontacts",
     data: function () {
         return {
-            data: {}
+            data: []
         }
     },
     methods: {
@@ -31,7 +44,8 @@ export default {
             axios
                 .get(url)
                 .then((result) => {
-                    this.data = result.data
+                    this.data = result.data.contacts
+                    console.log( result.data.contacts ); 
                 })
                 .catch((err) => {
                     console.log('Error: ' + err);

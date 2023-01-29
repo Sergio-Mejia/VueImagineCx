@@ -7,6 +7,7 @@ import getcontacts from '../components/contacts/getcontacts.vue'
 import getAccount from '../components/accounts/getAccount'
 import Accounts from '../components/accounts/Accounts.vue'
 import deleteAccounts from '../components/accounts/deleteAccount.vue'
+import campaigns from '../components/campaigns/getCampaigns.vue'
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: '/accounts',
     name: 'deleteAccounts',
     component: deleteAccounts
+  },
+  {
+    path: '/campaigns',
+    name: 'campaigns',
+    component: campaigns
   },
 ]
 
