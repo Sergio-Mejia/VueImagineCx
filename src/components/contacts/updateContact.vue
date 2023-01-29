@@ -70,7 +70,11 @@ export default {
                     this.msg = result.data.msg
                 })
                 .catch((err) => {
-                    console.log('Error: ' + err);
+                    if (err.response.status === 404) {
+                        this.msg = `El contacto ${this.contact.id} no se encuentra registrado`
+                    } else {
+                        this.msg = err.message
+                    }
                 })
         }
     },

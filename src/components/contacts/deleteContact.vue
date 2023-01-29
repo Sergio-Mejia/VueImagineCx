@@ -16,6 +16,7 @@
     </div>
 
 
+
 </template>
 
 <script>
@@ -27,7 +28,7 @@ export default {
     data: function () {
         return {
             msg: "",
-            contact : {
+            contact: {
                 id: 0
             }
         }
@@ -43,9 +44,13 @@ export default {
                     this.msg = result.data.msg
                 })
                 .catch((err) => {
-                    console.log('Error: ' + err);
+                    if (err.response.status === 404) {
+                        this.msg = `El contacto no se encuentra registrado`
+                    } else {
+                        this.msg = err.message
+                    }
                 })
-        }
+        },
     },
     created() {
         document.title = 'Contacts Delete'
@@ -55,6 +60,5 @@ export default {
 </script>
 
 <style>
-
 
 </style>

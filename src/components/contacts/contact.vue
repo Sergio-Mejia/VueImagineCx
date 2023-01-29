@@ -2,6 +2,7 @@
     <br>
     <div class="container">
         <h1>CONTACTS</h1>
+
         <form action="" v-on:submit.prevent="getContacts">
             <label for="inputId" class="form-label">Identificador Contacto</label>
             <input type="number" v-model="contact.id" id="inputId" class="form-control" aria-describedby="HelpBlock">
@@ -9,14 +10,10 @@
                 Ingresar numero identificador del contacto
             </div>
             <br>
-            <button type="submit" class="button-def">Buscar</button>
+            <button type="submit" class="button-def" @click="clearValues">Buscar</button>
         </form>
         <br>
-        <table class="table table-striped table-hover table-bordered">
-            <tr v-for="(item, idx) in contacts">
-                <td>{{ item }}</td>
-            </tr>
-        </table>
+
 
         <div class="centrar">
             <div class="card" style="width: 18rem;">
@@ -71,10 +68,18 @@ export default {
                     console.log(result.data.name);
                 })
                 .catch((err) => {
-                    if (err.response.status === 404){
-                        this.error = `El contacto no se encuentra registrado`
+                    if (err.response.status === 404) {
+                        this.error = `El contacto ${this.contact.id} no se encuentra registrado`
                     }
                 })
+        },
+        clearValues() {
+            this.nombre = ""
+            this.ciudad = ""
+            this.direccion = ""
+            this.job = ""
+            this.created = ""
+            this.error = ""
         }
     },
     created() {
@@ -89,5 +94,4 @@ export default {
     display: grid;
     place-items: center;
 }
-
 </style>
