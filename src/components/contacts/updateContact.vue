@@ -26,7 +26,6 @@
                     <input type="text" v-model="contact.street" id="inputDir" class="form-control" required>
                 </div>
             </div>
-            <br>
             <button type="submit" class="button-def">Actualizar Contacto</button>
         </form>
         <br>
@@ -57,7 +56,7 @@ export default {
     methods: {
         updateContacts() {
 
-            const url = `http://localhost:8080/api/imaginecx/contact/${this.contact.id}`;
+            const url = `http://localhost:8080/api/imaginecx/contacts/${this.contact.id}`;
             axios
                 .patch(url, {
                     "address": {

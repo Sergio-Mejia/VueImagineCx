@@ -8,7 +8,6 @@
             <div id="HelpBlock" class="form-text">
                 Ingresar numero identificador del contacto
             </div>
-            <br>
             <button type="submit" class="button-def">Eliminar</button>
         </form>
         <br>
@@ -37,7 +36,7 @@ export default {
     methods: {
         deleteContacts() {
 
-            const url = `http://localhost:8080/api/imaginecx/contact/${this.contact.id}`;
+            const url = `http://localhost:8080/api/imaginecx/contacts/${this.contact.id}`;
             axios
                 .delete(url)
                 .then((result) => {

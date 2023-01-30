@@ -7,6 +7,7 @@ import getcontacts from '../components/contacts/getcontacts.vue'
 import getAccount from '../components/accounts/getAccount'
 import Accounts from '../components/accounts/Accounts.vue'
 import campaigns from '../components/campaigns/getCampaigns.vue'
+import updateAccount from '../components/accounts/update.vue'
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     path: '/accounts',
     name: 'Accounts',
     component: Accounts
+  },
+  {
+    path: '/updateAccount',
+    name: 'updateAccount',
+    component: updateAccount
   },
   {
     path: '/campaigns',

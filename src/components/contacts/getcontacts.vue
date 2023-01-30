@@ -40,12 +40,12 @@ export default {
     methods: {
         getContacts() {
 
-            const url = `http://localhost:8080/api/imaginecx/contact`;
+            const url = `http://localhost:8080/api/imaginecx/contacts`;
             axios
                 .get(url)
                 .then((result) => {
-                    this.data = result.data.contacts
-                    console.log( result.data.contacts ); 
+                    this.data = result.data.all
+                    console.log( result.data.all ); 
                 })
                 .catch((err) => {
                     console.log('Error: ' + err);

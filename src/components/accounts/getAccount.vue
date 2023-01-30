@@ -20,8 +20,8 @@
                 <div class="card-body">
                     <h3 class="card-title">{{ name }}</h3>
                     <h4 class="card-subtitle mb-2 text-muted">{{ login }}</h4>
-                    <p class="card-text">{{ perfil.id }}</p>
-                    <p class="card-text">{{ perfil.nombre_perfil }}</p>
+                    <p class="card-text">{{ notif }}</p>
+                    <p class="card-text">{{ perfil }}</p>
                     <h2>{{ error }}</h2>
                 </div>
             </div>
@@ -41,12 +41,11 @@ export default {
             account: {
                 id: 0
             },
+
             name: "",
             login: "",
-            perfil: {
-                id: '',
-                nombre_perfil: ""
-            },
+            perfil: "",
+            notif: "",
             error: ""
         }
     },
@@ -57,16 +56,15 @@ export default {
             axios
                 .get(url)
                 .then((result) => {
-                    this.name = result.data.name
-                    this.login = result.data.login,
-                        this.perfil = {
-                            id: result.data.perfil.id,
-                            nombre_perfil: result.data.perfil.name
-                        }
+     
+                        this.name= result.data.all.lookupName;
+                        this.login= result.data.all.login;
+                        this.perfil= `Perfil:  ${result.data.all.profile.lookupName}`;
+                        this.notif= result.data.all.emailNotification.lookupName;
                 })
                 .catch((err) => {
                     if (err.response.status === 404) {
-                        this.error = `La cuenta ${this.account.id} no se encuentra registrada`
+                        this.error = `La cuenta ${this.account.id} no se encuentra registrada`;
                     }
                 })
         },

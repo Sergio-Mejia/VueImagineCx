@@ -9,7 +9,6 @@
             <div id="HelpBlock" class="form-text">
                 Ingresar numero identificador del contacto
             </div>
-            <br>
             <button type="submit" class="button-def" @click="clearValues">Buscar</button>
         </form>
         <br>
@@ -56,16 +55,15 @@ export default {
     methods: {
         getContacts() {
 
-            const url = `http://localhost:8080/api/imaginecx/contact/${this.contact.id}`;
+            const url = `http://localhost:8080/api/imaginecx/contacts/${this.contact.id}`;
             axios
                 .get(url)
                 .then((result) => {
-                    this.nombre = result.data.name
-                    this.ciudad = result.data.city
-                    this.direccion = result.data.address
-                    this.job = result.data.work
-                    this.created = result.data.createdTime
-                    console.log(result.data.name);
+                    this.nombre = result.data.all.lookupName
+                    this.ciudad = result.data.all.address.city
+                    this.direccion = result.data.all.address.street
+                    this.job = result.data.all.source.lookupName
+                    this.created = result.data.all.createdTime
                 })
                 .catch((err) => {
                     if (err.response.status === 404) {

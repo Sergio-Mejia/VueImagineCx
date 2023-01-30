@@ -61,7 +61,7 @@ export default {
             axios
                 .get(url)
                 .then((result) => {
-                    this.data = result.data.accounts
+                    this.data = result.data.all
                 })
                 .catch((err) => {
                     this.data = err.message

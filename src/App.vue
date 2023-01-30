@@ -31,7 +31,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" v-on:click="loadgetAccount">Get Account by Id</a></li>
-              <li><a class="dropdown-item" v-on:click="">Update Account</a></li>
+              <li><a class="dropdown-item" v-on:click="loadUpdateAccounts">Update Account</a></li>
               <li><a class="dropdown-item" v-on:click="loadAccounts">Get All Accounts</a></li>
             </ul>
           </li>
@@ -73,6 +73,9 @@ export default {
     },
     loadAccounts: function () {
       this.$router.push({ name: 'Accounts' });
+    },
+    loadUpdateAccounts: function () {
+      this.$router.push({ name: 'updateAccount' });
     },
     loadCampaigns: function () {
       this.$router.push({ name: 'campaigns' });
@@ -127,6 +130,7 @@ export default {
     border: 2px solid #2b2d2e;
     color: #e69a0f;
     font-size: 16px;
+    margin-top: 20px;
     padding: 12px 30px;
 }
 
