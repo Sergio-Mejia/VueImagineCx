@@ -19,23 +19,13 @@
             <br>
         </form>
         <br>
-
-
-        <div class="centrar">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h3 class="card-title">{{ msg }}</h3>
-                    <h2>{{ error }}</h2>
-                </div>
-            </div>
-        </div>
-
     </div>
 
 </template>
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     name: 'updateAccount',
@@ -58,13 +48,28 @@ export default {
                     "login": this.account.login
                 })
                 .then((result) => {
-                    this.msg = result.data.msg
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        confirmButtonColor: '#2e2b2d',
+                        text: `${result.data.msg}`,
+                    })
                 })
                 .catch((err) => {
                     if (err.response.status === 404) {
-                        this.msg = `La cuenta ${this.account.id} no se encuentra registrada`
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            confirmButtonColor: '#2e2b2d',
+                            text: `la cuenta ${this.account.id} no se encuentra registrada`,
+                        })
                     } else {
-                        this.msg = err.message
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            confirmButtonColor: '#2e2b2d',
+                            text: `${err.message}`,
+                        })
                     }
                 })
         }

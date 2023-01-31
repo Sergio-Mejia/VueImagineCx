@@ -15,7 +15,7 @@
                         aria-describedby="HelpBlock" required>
                 </div>
             </div>
-            <button type="submit" class="button-def" @click="clearValues">Actualizar</button>
+            <button type="submit" class="button-def">Actualizar</button>
             <br>
         </form>
         <br>
@@ -68,15 +68,9 @@ export default {
                     }
                 })
         }
-        ,
-        clearValues() {
-            this.msg = ""
-            this.login = ""
-            this.perfil = ""
-        }
     },
     created() {
-        document.title = "getAccount"
+        document.title = "getIncident"
     }
 
 }

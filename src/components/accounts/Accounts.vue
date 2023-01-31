@@ -45,7 +45,7 @@
 
 <script>
 import axios from 'axios';
-
+import Swal from 'sweetalert2';
 
 export default {
     name: "Accounts",
@@ -74,19 +74,47 @@ export default {
 
         deleteAccounts(id_account) {
             const url = `http://localhost:8080/api/imaginecx/accounts/${id_account}`;
-            axios
-                .delete(url)
-                .then((result) => {
-                    alert(result.data.msg)
-                    this.getAccounts()
-                })
-                .catch((err) => {
-                    if (err.response.status === 404) {
-                        this.msg = `La cuenta ${id_account} no se encuentra registrada`
-                    } else {
-                        this.msg = err.message
-                    }
-                })
+
+
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No se puede deshacer la acción",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2e2b2d',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Eliminar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios
+                        .delete(url)
+                        .then((result) => {
+                            Swal.fire(
+                                'Deleted!',
+                                `${ result.data.msg }`,
+                                'success'
+                            )
+                            this.getAccounts()
+                        })
+                        .catch((err) => {
+                            if (err.response.status === 404) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    confirmButtonColor: '#2e2b2d',
+                                    text: `La cuenta ${id_account} no se encuentra registrada`,
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    confirmButtonColor: '#2e2b2d',
+                                    text: `${err.message}`,
+                                })
+                            }
+                        })
+                }
+            })
         },
 
     },

@@ -102,7 +102,6 @@ export default {
                 .get(url)
                 .then((result) => {
                     this.data = result.data.all
-                    console.log(this.data + "Holaaaaaaaa");
                 })
                 .catch((err) => {
                     this.error = err.message

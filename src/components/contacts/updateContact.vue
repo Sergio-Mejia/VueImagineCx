@@ -28,8 +28,6 @@
             <button type="submit" class="button-def" style="margin-right: 5px;">Actualizar Contacto</button>
             <button type="reset" class="button-def">Limpiar Formulario</button>
         </form>
-        <br>
-        <h3>{{ msg }}</h3>
     </div>
 
 
@@ -38,6 +36,7 @@
 <script>
 
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     name: 'updateContact',
@@ -66,13 +65,26 @@ export default {
                     }
                 })
                 .then((result) => {
-                    this.msg = result.data.msg
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        confirmButtonColor: '#2e2b2d',
+                        text: `${result.data.msg}`,
+                    })
                 })
                 .catch((err) => {
                     if (err.response.status === 404) {
-                        this.msg = `El contacto ${this.contact.id} no se encuentra registrado`
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: `El contacto ${this.contact.id} no se encuentra registrado`,
+                        })
                     } else {
-                        this.msg = err.message
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: `${err.message}`,
+                        })
                     }
                 })
         }

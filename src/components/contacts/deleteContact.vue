@@ -10,7 +10,6 @@
             <button type="submit" class="button-def">Eliminar</button>
         </form>
         <br>
-        <h4>{{ msg }}</h4>
     </div>
 
 
@@ -20,6 +19,7 @@
 <script>
 
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     name: 'deleteContact',
@@ -36,18 +36,44 @@ export default {
         deleteContacts() {
 
             const url = `http://localhost:8080/api/imaginecx/contacts/${this.contact.id}`;
-            axios
-                .delete(url)
-                .then((result) => {
-                    this.msg = result.data.msg
-                })
-                .catch((err) => {
-                    if (err.response.status === 404) {
-                        this.msg = `El contacto no se encuentra registrado`
-                    } else {
-                        this.msg = err.message
-                    }
-                })
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No se puede deshacer la acción",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2e2b2d',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Eliminar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios
+                        .delete(url)
+                        .then((result) => {
+                            Swal.fire(
+                                'Deleted!',
+                                `${result.data.msg}`,
+                                'success'
+                            )
+                            this.getAccounts()
+                        })
+                        .catch((err) => {
+                            if (err.response.status === 404) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    confirmButtonColor: '#2e2b2d',
+                                    text: `El contacto ${this.contact.id} no se encuentra registrado`,
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: `${err.message}`,
+                                })
+                            }
+                        })
+                }
+            })
         },
     },
     created() {
