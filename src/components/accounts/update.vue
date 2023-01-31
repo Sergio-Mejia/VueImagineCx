@@ -1,5 +1,4 @@
 <template>
-    <br>
     <div class="container">
         <h1>Update Account</h1>
         <br>

@@ -1,5 +1,4 @@
 <template>
-    <br>
     <div class="container">
         <h1>Get Account by Id</h1>
 

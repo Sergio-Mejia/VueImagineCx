@@ -1,5 +1,4 @@
 <template>
-    <br>
     <div class="container">
         <h1>CONTACTS UPDATE</h1>
         <br>

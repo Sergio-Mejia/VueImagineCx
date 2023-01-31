@@ -3,7 +3,7 @@
     <div class="container">
         <h1>Campaigns</h1>
         <br>
-        <div class="row row-cols-3">
+        <div class="row row-cols-3" v-if="data.length > 0">
             <div class="col-4" v-for="(item, idx) in data">
                 <div class="card text-bg-dark card-style">
                     <div class="card-header" style="color: #e69a0f;">
@@ -43,8 +43,14 @@
                 </div>
             </div>
         </div>
+        <div v-else="data == 0">
+            <div class="alert alert-danger" role="alert">
+                No hay campañas registradas
+            </div>
+        </div>
 
-        <div class="modal fade" id="modalcampaign" tabindex="-1" aria-labelledby="modalcampaignLabel" aria-hidden="true">
+        <div class="modal fade" id="modalcampaign" tabindex="-1" aria-labelledby="modalcampaignLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content bg-dark text-white">
                     <div class="modal-header">
@@ -91,15 +97,15 @@ export default {
     },
     methods: {
         getCampaigns() {
-
             const url = `http://localhost:8080/api/imaginecx/campaigns`;
             axios
                 .get(url)
                 .then((result) => {
                     this.data = result.data.all
+                    console.log(this.data + "Holaaaaaaaa");
                 })
                 .catch((err) => {
-                    this.data = err.message
+                    this.error = err.message
                 })
         },
         getCampaignId(id_campaign) {
@@ -108,11 +114,11 @@ export default {
             axios
                 .get(url)
                 .then((result) => {
-                        this.id = result.data.all.id;
-                        this.name = result.data.all.lookupName;
-                        this.type = result.data.all.folder.lookupName;
-                        this.cost = `Costo: ${result.data.all.actualCost.value}`
-                        this.created = `Fecha Creación: ${result.data.all.createdTime}`;
+                    this.id = result.data.all.id;
+                    this.name = result.data.all.lookupName;
+                    this.type = result.data.all.folder.lookupName;
+                    this.cost = `Costo: ${result.data.all.actualCost.value}`
+                    this.created = `Fecha Creación: ${result.data.all.createdTime}`;
                 })
                 .catch((err) => {
                     if (err.response.status === 404) {

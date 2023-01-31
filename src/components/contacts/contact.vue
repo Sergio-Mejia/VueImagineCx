@@ -1,5 +1,4 @@
 <template>
-    <br>
     <div class="container">
         <h1>CONTACTS</h1>
 
@@ -68,6 +67,8 @@ export default {
                 .catch((err) => {
                     if (err.response.status === 404) {
                         this.error = `El contacto ${this.contact.id} no se encuentra registrado`
+                    }else{
+                        this.error = err.message
                     }
                 })
         },

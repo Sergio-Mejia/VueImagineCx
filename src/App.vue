@@ -134,7 +134,7 @@ export default {
 }
 
 .container{
-  margin-top: 90px;
+  margin-top: 100px;
 }
 
 .button-def{

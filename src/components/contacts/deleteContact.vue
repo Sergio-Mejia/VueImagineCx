@@ -1,5 +1,4 @@
 <template>
-    <br>
     <div class="container">
         <h1>DELETE CONTACTS</h1>
         <form action="" v-on:submit.prevent="deleteContacts">

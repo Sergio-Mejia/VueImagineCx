@@ -1,9 +1,8 @@
 <template>
-    <br>
     <div class="container">
         <h1>All Incidents</h1>
-
-        <div class="row row-cols-3">
+        <br>
+        <div class="row row-cols-3" v-if="data.length > 0">
             <div class="col-4" v-for="(item, idx) in data">
                 <div class="card text-bg-dark card-style">
                     <div class="card-header" style="color: #e69a0f;">
@@ -41,6 +40,11 @@
                         <p class="card-text">{{ item.createdTime }}</p>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div v-else="data == 0">
+            <div class="alert alert-danger" role="alert">
+                No hay incidentes registrados
             </div>
         </div>
 
@@ -82,7 +86,8 @@ export default {
             created: "",
             estado: "",
             tipoEstado: "",
-            subject: ""
+            subject: "",
+            msg: ""
         }
     },
     methods: {
@@ -94,7 +99,7 @@ export default {
                     this.data = result.data.all
                 })
                 .catch((err) => {
-                    this.data = err.message
+                    this.error = err.message
                 })
         },
         incidentById(id_incident) {
@@ -110,7 +115,7 @@ export default {
             })
             .catch((err) => {
                 if (err.response.status === 404) {
-                    this.msg = `La cuenta ${id_account} no se encuentra registrada`
+                    this.msg = `El incidente ${id_account} no se encuentra registrado`
                 } else {
                     this.msg = err.message
                 }

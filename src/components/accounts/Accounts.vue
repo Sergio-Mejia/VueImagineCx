@@ -1,10 +1,9 @@
 <template>
 
     <div class="container">
-        <br>
         <h1>All Accounts</h1>
         <br>
-        <table class="table table-hover table-dark">
+        <table class="table table-hover table-dark" v-if="data.length > 0">
             <thead>
                 <tr class="color-items">
                     <th scope="col">#</th>
@@ -34,6 +33,11 @@
                 </tr>
             </tbody>
         </table>
+        <div v-else="data == 0">
+            <div class="alert alert-danger" role="alert">
+                No hay cuentas registradas
+            </div>
+        </div>
     </div>
 
 </template>
@@ -50,7 +54,8 @@ export default {
             data: [],
             accounts: {
                 id: 0
-            }
+            },
+            error: ""
         }
     },
     methods: {
@@ -63,7 +68,7 @@ export default {
                     this.data = result.data.all
                 })
                 .catch((err) => {
-                    this.data = err.message
+                    this.error = err.message
                 })
         },
 

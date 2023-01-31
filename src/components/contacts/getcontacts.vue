@@ -1,11 +1,8 @@
 <template>
-
     <div class="container">
-        <br>
         <h1>All Contacts</h1>
-
         <br>
-        <table class="table table-hover table-dark">
+        <table class="table table-hover table-dark" v-if="data.length > 0">
             <thead>
                 <tr class="color-items">
                     <th scope="col">#</th>
@@ -14,13 +11,18 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr  v-for="(item, idx) in data">
+                <tr v-for="(item, idx) in data">
                     <th scope="row" class="color-items"> {{ item.id }} </th>
                     <td>{{ item.lookupName }}</td>
                     <td>{{ item.createdTime }}</td>
                 </tr>
             </tbody>
         </table>
+        <div v-else="data == 0">
+            <div class="alert alert-danger" role="alert">
+                No hay contactos registrados
+            </div>
+        </div>
     </div>
 
 </template>
@@ -45,13 +47,13 @@ export default {
                 .get(url)
                 .then((result) => {
                     this.data = result.data.all
-                    console.log( result.data.all ); 
+                    console.log(result.data.all);
                 })
                 .catch((err) => {
                     console.log('Error: ' + err);
                 })
         },
-        
+
     },
     created() {
         this.getContacts();
