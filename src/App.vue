@@ -22,7 +22,7 @@
               <li><a class="dropdown-item" v-on:click="loadContact">Get Contact by Id</a></li>
               <li><a class="dropdown-item" v-on:click="loadContactDelete">Delete Contact</a></li>
               <li><a class="dropdown-item" v-on:click="loadContactUpdate">Update Contact</a></li>
-              <li><a class="dropdown-item" v-on:click="loadContactsAll">Get All Contacts</a></li>
+              <li><a class="dropdown-item" v-on:click="loadContactsAll">All Contacts</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -32,7 +32,17 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" v-on:click="loadgetAccount">Get Account by Id</a></li>
               <li><a class="dropdown-item" v-on:click="loadUpdateAccounts">Update Account</a></li>
-              <li><a class="dropdown-item" v-on:click="loadAccounts">Get All Accounts</a></li>
+              <li><a class="dropdown-item" v-on:click="loadAccounts">All Accounts</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Incidents
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" v-on:click="">Get Incident by Id</a></li>
+              <li><a class="dropdown-item" v-on:click="">Update Account</a></li>
+              <li><a class="dropdown-item" v-on:click="loadIncidents">All Incidents</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -79,6 +89,9 @@ export default {
     },
     loadCampaigns: function () {
       this.$router.push({ name: 'campaigns' });
+    },
+    loadIncidents: function () {
+      this.$router.push({ name: 'allIncidents' });
     },
   }
 }

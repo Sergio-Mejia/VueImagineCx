@@ -1,8 +1,8 @@
 <template>
-
+    <br>
     <div class="container">
-        <h1>Campaigns</h1>
-        <br>
+        <h1>All Incidents</h1>
+
         <div class="row row-cols-3">
             <div class="col-4" v-for="(item, idx) in data">
                 <div class="card text-bg-dark card-style">
@@ -12,8 +12,8 @@
                                 {{ item.id }}
                             </div>
                             <div class="col">
-                                <button class="button-list" data-bs-toggle="modal" data-bs-target="#modalcampaign"
-                                    v-on:click="getCampaignId(item.id)">
+                                <button class="button-list" data-bs-toggle="modal" data-bs-target="#modal1"
+                                    v-on:click="incidentById(item.id)">
                                     <svg height="20px" width="20px" viewBox="0 0 24 24" fill="none"
                                         xmlns="../assets/more.svg" stroke="#000000">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -44,19 +44,19 @@
             </div>
         </div>
 
-        <div class="modal fade" id="modalcampaign" tabindex="-1" aria-labelledby="modalcampaignLabel" aria-hidden="true">
+        <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content bg-dark text-white">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalcampaignLabel">{{ name }}</h1>
+                        <h1 class="modal-title fs-5" id="modal1Label">{{ nombre }}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <h2>{{ id }}</h2>
-                        <h4>{{ cost }}</h4>
-                        <h4>{{ type }}</h4>
-                        <p>{{ subject }}</p>
                         <h5>{{ created }}</h5>
+                        <h4>{{ estado }}</h4>
+                        <h4>{{ tipoEstado }}</h4>
+                        <p>{{ subject }}</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="button-list" data-bs-dismiss="modal">Close</button>
@@ -68,33 +68,28 @@
 
 </template>
 
-
 <script>
+
 import axios from 'axios';
 
-
 export default {
-    name: "campaigns",
+    name: "allIncidents",
     data: function () {
         return {
             data: [],
-            campaign: {
-                id: 0
-            },
-            name: "",
+            id: "",
+            nombre: "",
             created: "",
-            type: "",
-            cost: "",
-            error: "",
-            id: ""
+            estado: "",
+            tipoEstado: "",
+            subject: ""
         }
     },
     methods: {
-        getCampaigns() {
+        getIncidents() {
 
-            const url = `http://localhost:8080/api/imaginecx/campaigns`;
-            axios
-                .get(url)
+            const url = `http://localhost:8080/api/imaginecx/incidents`;
+            axios.get(url)
                 .then((result) => {
                     this.data = result.data.all
                 })
@@ -102,41 +97,45 @@ export default {
                     this.data = err.message
                 })
         },
-        getCampaignId(id_campaign) {
-
-            const url = `http://localhost:8080/api/imaginecx/campaigns/${id_campaign}`;
-            axios
-                .get(url)
-                .then((result) => {
-                        this.id = result.data.all.id;
-                        this.name = result.data.all.lookupName;
-                        this.type = result.data.all.folder.lookupName;
-                        this.cost = `Costo: ${result.data.all.actualCost.value}`
-                        this.created = `Fecha Creación: ${result.data.all.createdTime}`;
-                })
-                .catch((err) => {
-                    if (err.response.status === 404) {
-                        this.error = `La campaña ${this.campaign.id} no se encuentra registrada`
-                    }
-                })
+        incidentById(id_incident) {
+            const url = `http://localhost:8080/api/imaginecx/incidents/${id_incident}`;
+            axios.get(url)
+            .then((result) => {
+                this.id = result.data.all.id
+                this.nombre = result.data.all.lookupName
+                this.created = result.data.all.createdTime
+                this.estado = `Estado: ${result.data.all.statusWithType.status.lookupName}`
+                this.tipoEstado = result.data.all.statusWithType.statusType.lookupName
+                this.subject = result.data.all.subject
+            })
+            .catch((err) => {
+                if (err.response.status === 404) {
+                    this.msg = `La cuenta ${id_account} no se encuentra registrada`
+                } else {
+                    this.msg = err.message
+                }
+            })
         },
-        clearValues() {
-            this.compania = {}
-            this.error = ""
-        }
     },
     created() {
-        this.getCampaigns();
-        document.title = 'Campaigns';
+        document.title = "Incidents";
+        this.getIncidents()
     }
 }
 
 </script>
 
-
 <style>
-.card-style {
-    max-width: 20rem;
-    margin-top: 12px;
+.button-list {
+    background-color: #2b2d2e;
+    border-radius: 10px;
+    border: 2px solid #2b2d2e;
+    color: #e69a0f;
+    font-size: 16px;
+    padding: 5px 30px;
+}
+
+.button-list:hover {
+    background-color: #18181a;
 }
 </style>

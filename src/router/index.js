@@ -8,6 +8,7 @@ import getAccount from '../components/accounts/getAccount'
 import Accounts from '../components/accounts/Accounts.vue'
 import campaigns from '../components/campaigns/getCampaigns.vue'
 import updateAccount from '../components/accounts/update.vue'
+import allIncidents from '../components/incidents/getIncidents.vue'
 
 const routes = [
   {
@@ -54,6 +55,11 @@ const routes = [
     path: '/campaigns',
     name: 'campaigns',
     component: campaigns
+  },
+  {
+    path: '/allIncidents',
+    name: 'allIncidents',
+    component: allIncidents
   },
 ]
 
