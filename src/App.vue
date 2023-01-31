@@ -41,7 +41,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" v-on:click="">Get Incident by Id</a></li>
-              <li><a class="dropdown-item" v-on:click="">Update Account</a></li>
+              <li><a class="dropdown-item" v-on:click="updateIncident">Update Incident</a></li>
               <li><a class="dropdown-item" v-on:click="loadIncidents">All Incidents</a></li>
             </ul>
           </li>
@@ -92,6 +92,9 @@ export default {
     },
     loadIncidents: function () {
       this.$router.push({ name: 'allIncidents' });
+    },
+    updateIncident: function () {
+      this.$router.push({ name: 'updateIncident' });
     },
   }
 }

@@ -13,7 +13,7 @@
                             </div>
                             <div class="col">
                                 <button class="button-list" data-bs-toggle="modal" data-bs-target="#modalcampaign"
-                                    v-on:click="getCampaignId(item.id)">
+                                    v-on:click="getCampaignId(item.id)" @click="clearValues">
                                     <svg height="20px" width="20px" viewBox="0 0 24 24" fill="none"
                                         xmlns="../assets/more.svg" stroke="#000000">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -127,8 +127,12 @@ export default {
                 })
         },
         clearValues() {
-            this.compania = {}
-            this.error = ""
+            this.name= ""
+            this.created= ""
+            this.type= ""
+            this.cost= ""
+            this.error= ""
+            this.id= ""
         }
     },
     created() {

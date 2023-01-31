@@ -12,7 +12,7 @@
                             </div>
                             <div class="col">
                                 <button class="button-list" data-bs-toggle="modal" data-bs-target="#modal1"
-                                    v-on:click="incidentById(item.id)">
+                                    v-on:click="incidentById(item.id)" @click="clearValues">
                                     <svg height="20px" width="20px" viewBox="0 0 24 24" fill="none"
                                         xmlns="../assets/more.svg" stroke="#000000">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -99,7 +99,7 @@ export default {
                     this.data = result.data.all
                 })
                 .catch((err) => {
-                    this.error = err.message
+                    this.msg = err.message
                 })
         },
         incidentById(id_incident) {
@@ -115,11 +115,20 @@ export default {
             })
             .catch((err) => {
                 if (err.response.status === 404) {
-                    this.msg = `El incidente ${id_account} no se encuentra registrado`
+                    this.msg = `El incidente ${id_incident} no se encuentra registrado`
                 } else {
                     this.msg = err.message
                 }
             })
+        },
+        clearValues() {
+            this.id = ""
+            this.nombre= ""
+            this.created= ""
+            this.estado= ""
+            this.tipoEstado= ""
+            this.msg= ""
+            this.subject= ""
         },
     },
     created() {

@@ -25,7 +25,8 @@
                     <input type="text" v-model="contact.street" id="inputDir" class="form-control" required>
                 </div>
             </div>
-            <button type="submit" class="button-def">Actualizar Contacto</button>
+            <button type="submit" class="button-def" style="margin-right: 5px;">Actualizar Contacto</button>
+            <button type="reset" class="button-def">Limpiar Formulario</button>
         </form>
         <br>
         <h3>{{ msg }}</h3>
