@@ -41,7 +41,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" v-on:click="loadgetOrganizations">All Organizations</a></li>
-              <li><a class="dropdown-item" v-on:click="updateIncident">Update and Delete</a></li>
+              <li><a class="dropdown-item" v-on:click="loadDelUpdOrganizations">Update and Delete</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -108,6 +108,9 @@ export default {
     },
     loadgetOrganizations: function () {
       this.$router.push({ name: 'getOrganizations' });
+    },
+    loadDelUpdOrganizations: function () {
+      this.$router.push({ name: 'deleteUpdateO' });
     },
   }
 }

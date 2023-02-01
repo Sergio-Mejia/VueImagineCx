@@ -11,6 +11,7 @@ import allIncidents from '../components/incidents/getIncidents.vue'
 import updateIncident from '../components/incidents/updateIncident.vue'
 import messageBases from '../components/messageBases/messageBases'
 import getOrganizations from '../components/organizations/getOrganizations'
+import deleteUpdateO from '../components/organizations/deleteUpdate'
 
 const routes = [
   {
@@ -72,6 +73,11 @@ const routes = [
     path: '/getOrganizations',
     name: 'getOrganizations',
     component: getOrganizations
+  },
+  {
+    path: '/Organizations',
+    name: 'deleteUpdateO',
+    component: deleteUpdateO
   },
 ]
 

@@ -44,7 +44,7 @@
         </div>
         <div v-else="data == 0">
             <div class="alert alert-danger" role="alert">
-                No hay organizationses registrados
+                No hay organizaciones registradas
             </div>
         </div>
 
