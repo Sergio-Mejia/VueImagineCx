@@ -37,11 +37,11 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Incidents
+              Organizations
             </a>
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" v-on:click="loadIncidents">All Incidents</a></li>
-              <li><a class="dropdown-item" v-on:click="updateIncident">Update Incident</a></li>
+              <li><a class="dropdown-item" v-on:click="loadgetOrganizations">All Organizations</a></li>
+              <li><a class="dropdown-item" v-on:click="updateIncident">Update and Delete</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -49,11 +49,11 @@
               aria-expanded="false"> More </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" v-on:click="loadCampaigns">Campaigns</a></li>
-              <li><a class="dropdown-item" v-on:click="loadMessageBases">messageBases</a></li>
-              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">Test</a>
+              <li><a class="dropdown-item" v-on:click="loadMessageBases">MessageBases</a></li>
+              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">Incidents</a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" v-on:click="loadCampaigns">Campaigns</a></li>
-                  <li><a class="dropdown-item" href="#">Submenu0</a></li>
+                  <li><a class="dropdown-item" v-on:click="loadIncidents">All Incidents</a></li>
+                  <li><a class="dropdown-item" v-on:click="updateIncident">Update Incident</a></li>
                 </ul>
               </li>
             </ul>
@@ -105,6 +105,9 @@ export default {
     },
     loadMessageBases: function () {
       this.$router.push({ name: 'messageBases' });
+    },
+    loadgetOrganizations: function () {
+      this.$router.push({ name: 'getOrganizations' });
     },
   }
 }
@@ -164,7 +167,7 @@ export default {
   background-color: #18181a;
 }
 
-.centrar{
+.centrar {
   display: grid;
   place-items: center;
 }
@@ -177,9 +180,10 @@ export default {
   display: block;
 }
 
-.dropdown-menu .dropdown-item{
+.dropdown-menu .dropdown-item {
   color: #e69a0f;
 }
+
 .dropdown-submenu {
   position: relative;
 }

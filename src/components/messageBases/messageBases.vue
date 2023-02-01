@@ -43,12 +43,12 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h2>{{ nombre }}</h2>
+                        <h3>{{ msg }}</h3>
+                        <h3>{{ nombre }}</h3>
                         <br>
                         <h4>{{ value }}</h4>
                         <br>
                         <h5>{{ type }}</h5>
-                        <h3>{{ msg }}</h3>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="button-list" data-bs-dismiss="modal">Close</button>

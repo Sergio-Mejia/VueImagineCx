@@ -10,6 +10,7 @@ import updateAccount from '../components/accounts/update.vue'
 import allIncidents from '../components/incidents/getIncidents.vue'
 import updateIncident from '../components/incidents/updateIncident.vue'
 import messageBases from '../components/messageBases/messageBases'
+import getOrganizations from '../components/organizations/getOrganizations'
 
 const routes = [
   {
@@ -66,6 +67,11 @@ const routes = [
     path: '/messageBases',
     name: 'messageBases',
     component: messageBases
+  },
+  {
+    path: '/getOrganizations',
+    name: 'getOrganizations',
+    component: getOrganizations
   },
 ]
 
