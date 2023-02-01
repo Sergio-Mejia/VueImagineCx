@@ -20,10 +20,9 @@
               Contacts
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" v-on:click="loadContact">Get Contact by Id</a></li>
+              <li><a class="dropdown-item" v-on:click="loadContactsAll">All Contacts</a></li>
               <li><a class="dropdown-item" v-on:click="loadContactDelete">Delete Contact</a></li>
               <li><a class="dropdown-item" v-on:click="loadContactUpdate">Update Contact</a></li>
-              <li><a class="dropdown-item" v-on:click="loadContactsAll">All Contacts</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -31,9 +30,9 @@
               Accounts
             </a>
             <ul class="dropdown-menu">
+              <li><a class="dropdown-item" v-on:click="loadAccounts">All Accounts</a></li>
               <li><a class="dropdown-item" v-on:click="loadgetAccount">Get Account by Id</a></li>
               <li><a class="dropdown-item" v-on:click="loadUpdateAccounts">Update Account</a></li>
-              <li><a class="dropdown-item" v-on:click="loadAccounts">All Accounts</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -41,9 +40,8 @@
               Incidents
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" v-on:click="">Get Incident by Id</a></li>
-              <li><a class="dropdown-item" v-on:click="updateIncident">Update Incident</a></li>
               <li><a class="dropdown-item" v-on:click="loadIncidents">All Incidents</a></li>
+              <li><a class="dropdown-item" v-on:click="updateIncident">Update Incident</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -78,9 +76,6 @@ export default {
 
   },
   methods: {
-    loadContact: function () {
-      this.$router.push({ name: 'contact' });
-    },
     loadContactDelete: function () {
       this.$router.push({ name: 'deleteContact' });
     },
@@ -164,6 +159,11 @@ export default {
 
 .button-def:hover {
   background-color: #18181a;
+}
+
+.centrar{
+  display: grid;
+  place-items: center;
 }
 
 .color-items {
