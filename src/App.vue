@@ -19,7 +19,7 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Contacts
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" v-on:click="loadContactsAll">All Contacts</a></li>
               <li><a class="dropdown-item" v-on:click="loadContactDelete">Delete Contact</a></li>
               <li><a class="dropdown-item" v-on:click="loadContactUpdate">Update Contact</a></li>
@@ -29,7 +29,7 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Accounts
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" v-on:click="loadAccounts">All Accounts</a></li>
               <li><a class="dropdown-item" v-on:click="loadgetAccount">Get Account by Id</a></li>
               <li><a class="dropdown-item" v-on:click="loadUpdateAccounts">Update Account</a></li>
@@ -39,7 +39,7 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Incidents
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" v-on:click="loadIncidents">All Incidents</a></li>
               <li><a class="dropdown-item" v-on:click="updateIncident">Update Incident</a></li>
             </ul>
@@ -47,11 +47,11 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false"> More </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" v-on:click="loadCampaigns">Campaigns</a></li>
-              <li><a class="dropdown-item" v-on:click="loadCampaigns">Campaigns</a></li>
+              <li><a class="dropdown-item" v-on:click="loadMessageBases">messageBases</a></li>
               <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">Test</a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu dropdown-menu-dark">
                   <li><a class="dropdown-item" v-on:click="loadCampaigns">Campaigns</a></li>
                   <li><a class="dropdown-item" href="#">Submenu0</a></li>
                 </ul>
@@ -102,6 +102,9 @@ export default {
     },
     updateIncident: function () {
       this.$router.push({ name: 'updateIncident' });
+    },
+    loadMessageBases: function () {
+      this.$router.push({ name: 'messageBases' });
     },
   }
 }
@@ -174,6 +177,9 @@ export default {
   display: block;
 }
 
+.dropdown-menu .dropdown-item{
+  color: #e69a0f;
+}
 .dropdown-submenu {
   position: relative;
 }
