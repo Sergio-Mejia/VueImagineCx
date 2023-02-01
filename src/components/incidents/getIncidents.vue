@@ -2,6 +2,19 @@
     <div class="container">
         <h1>All Incidents</h1>
         <br>
+        <form action="" v-on:submit.prevent="getincidentById">
+            <div class="row">
+                <div class="col-9">
+                    <label for="inputId" class="form-label">Identificador Incidente</label>
+                    <input type="number" v-model="id2" id="inputId" class="form-control" aria-describedby="HelpBlock">
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="button-def" @click="clearValues" data-bs-toggle="modal"
+                        data-bs-target="#modal1">Buscar</button>
+                </div>
+            </div>
+        </form>
+        <br>
         <div class="row row-cols-3" v-if="data.length > 0">
             <div class="col-4" v-for="(item, idx) in data">
                 <div class="card text-bg-dark card-style">
@@ -61,6 +74,7 @@
                         <h4>{{ estado }}</h4>
                         <h4>{{ tipoEstado }}</h4>
                         <p>{{ subject }}</p>
+                        <h3>{{ msg }}</h3>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="button-list" data-bs-dismiss="modal">Close</button>
@@ -82,6 +96,7 @@ export default {
         return {
             data: [],
             id: "",
+            id2: "",
             nombre: "",
             created: "",
             estado: "",
@@ -105,30 +120,45 @@ export default {
         incidentById(id_incident) {
             const url = `http://localhost:8080/api/imaginecx/incidents/${id_incident}`;
             axios.get(url)
-            .then((result) => {
-                this.id = result.data.all.id
-                this.nombre = result.data.all.lookupName
-                this.created = result.data.all.createdTime
-                this.estado = `Estado: ${result.data.all.statusWithType.status.lookupName}`
-                this.tipoEstado = result.data.all.statusWithType.statusType.lookupName
-                this.subject = result.data.all.subject
-            })
-            .catch((err) => {
-                if (err.response.status === 404) {
-                    this.msg = `El incidente ${id_incident} no se encuentra registrado`
-                } else {
-                    this.msg = err.message
-                }
-            })
+                .then((result) => {
+                    this.id = result.data.all.id
+                    this.nombre = result.data.all.lookupName
+                    this.created = result.data.all.createdTime
+                    this.estado = `Estado: ${result.data.all.statusWithType.status.lookupName}`
+                    this.tipoEstado = result.data.all.statusWithType.statusType.lookupName
+                    this.subject = result.data.all.subject
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        },
+        getincidentById() {
+            const url = `http://localhost:8080/api/imaginecx/incidents/${this.id2}`;
+            axios.get(url)
+                .then((result) => {
+                    this.id = result.data.all.id
+                    this.nombre = result.data.all.lookupName
+                    this.created = result.data.all.createdTime
+                    this.estado = `Estado: ${result.data.all.statusWithType.status.lookupName}`
+                    this.tipoEstado = result.data.all.statusWithType.statusType.lookupName
+                    this.subject = result.data.all.subject
+                })
+                .catch((err) => {
+                    if (err.response.status === 404) {
+                        this.msg = `El incidente ${this.id2} no se encuentra registrado`
+                    } else {
+                        this.msg = err.message
+                    }
+                })
         },
         clearValues() {
             this.id = ""
-            this.nombre= ""
-            this.created= ""
-            this.estado= ""
-            this.tipoEstado= ""
-            this.msg= ""
-            this.subject= ""
+            this.nombre = ""
+            this.created = ""
+            this.estado = ""
+            this.tipoEstado = ""
+            this.msg = ""
+            this.subject = ""
         },
     },
     created() {

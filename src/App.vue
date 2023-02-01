@@ -3,6 +3,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
 
+
   <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#" id="nav-text-color">
@@ -45,8 +46,19 @@
               <li><a class="dropdown-item" v-on:click="loadIncidents">All Incidents</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" v-on:click="loadCampaigns">Campaigns</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false"> More </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" v-on:click="loadCampaigns">Campaigns</a></li>
+              <li><a class="dropdown-item" v-on:click="loadCampaigns">Campaigns</a></li>
+              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">Test</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" v-on:click="loadCampaigns">Campaigns</a></li>
+                  <li><a class="dropdown-item" href="#">Submenu0</a></li>
+                </ul>
+              </li>
+            </ul>
           </li>
         </ul>
         <span class="navbar-text">
@@ -132,29 +144,48 @@ export default {
   color: #e69a0f;
 }
 
-.dropdown-item{
+.dropdown-item {
   cursor: pointer;
 }
 
-.container{
+.container {
   margin-top: 100px;
 }
 
-.button-def{
-    background-color: #2b2d2e;
-    border-radius: 10px;
-    border: 2px solid #2b2d2e;
-    color: #e69a0f;
-    font-size: 16px;
-    margin-top: 20px;
-    padding: 12px 30px;
+.button-def {
+  background-color: #2b2d2e;
+  border-radius: 10px;
+  border: 2px solid #2b2d2e;
+  color: #e69a0f;
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 12px 30px;
 }
 
-.button-def:hover{
-    background-color: #18181a;
+.button-def:hover {
+  background-color: #18181a;
 }
 
-.color-items{
-    color: #e69a0f;
+.color-items {
+  color: #e69a0f;
+}
+
+.navbar-nav li:hover>ul.dropdown-menu {
+  display: block;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+}
+
+.dropdown-menu>li>a:hover:after {
+  text-decoration: underline;
+  transform: rotate(-90deg);
 }
 </style>
