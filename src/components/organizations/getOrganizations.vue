@@ -37,7 +37,6 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ item.lookupName }}</h5>
-                        <p class="card-text">{{ item.createdTime }}</p>
                     </div>
                 </div>
             </div>
@@ -103,7 +102,7 @@ export default {
                 .then((result) => {
                     this.id = result.data.all.id
                     this.nombre = result.data.all.lookupName
-                    this.created = result.data.all.createdTime
+                    this.created = `Fecha Creación: ${result.data.all.createdTime}`
                     this.nit = `NIT: ${result.data.all.customFields.c.nit}`
                 })
                 .catch((err) => {

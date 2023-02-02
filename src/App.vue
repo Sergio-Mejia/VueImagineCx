@@ -56,6 +56,7 @@
                   <li><a class="dropdown-item" v-on:click="updateIncident">Update Incident</a></li>
                 </ul>
               </li>
+              <li><a class="dropdown-item" v-on:click="loadChanneltypes">ChannelTypes</a></li>
             </ul>
           </li>
         </ul>
@@ -111,6 +112,9 @@ export default {
     },
     loadDelUpdOrganizations: function () {
       this.$router.push({ name: 'deleteUpdateO' });
+    },
+    loadChanneltypes: function () {
+      this.$router.push({ name: 'channeltypes' });
     },
   }
 }

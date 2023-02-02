@@ -1,7 +1,7 @@
 <template>
 
     <div class="container">
-        <h1>Campaigns</h1>
+        <h1>Channel Types</h1>
         <br>
         <div class="row row-cols-3" v-if="data.length > 0">
             <div class="col-4" v-for="(item, idx) in data">
@@ -12,8 +12,8 @@
                                 {{ item.id }}
                             </div>
                             <div class="col">
-                                <button class="button-list" data-bs-toggle="modal" data-bs-target="#modalcampaign"
-                                    v-on:click="getCampaignId(item.id)" @click="clearValues">
+                                <button class="button-list" data-bs-toggle="modal" data-bs-target="#modalchanneltype"
+                                    v-on:click="getChannelTypeId(item.id)" @click="clearValues">
                                     <svg height="20px" width="20px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg" stroke="#000000">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -44,24 +44,22 @@
         </div>
         <div v-else="data == 0">
             <div class="alert alert-danger" role="alert">
-                No hay campañas registradas
+                No hay Canales registrados
             </div>
         </div>
 
-        <div class="modal fade" id="modalcampaign" tabindex="-1" aria-labelledby="modalcampaignLabel"
+        <div class="modal fade" id="modalchanneltype" tabindex="-1" aria-labelledby="modalchanneltypeLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content bg-dark text-white">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalcampaignLabel">{{ name }}</h1>
+                        <h1 class="modal-title fs-5" id="modalchanneltypeLabel">{{ id }}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h2>{{ id }}</h2>
-                        <h4>{{ cost }}</h4>
-                        <h4>{{ type }}</h4>
-                        <p>{{ subject }}</p>
-                        <h5>{{ created }}</h5>
+                        <h2>{{ name }}</h2>
+                        <h4>{{ monitoreo }}</h4>
+                        <h4>{{ visibility }}</h4>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="button-list" data-bs-dismiss="modal">Close</button>
@@ -79,24 +77,22 @@ import axios from 'axios';
 
 
 export default {
-    name: "campaigns",
+    name: "channeltypes",
     data: function () {
         return {
             data: [],
-            campaign: {
+            channeltype: {
                 id: 0
             },
             name: "",
-            created: "",
-            type: "",
-            cost: "",
+            monitoreo: "",
+            visibility: "",
             error: "",
-            id: ""
         }
     },
     methods: {
-        getCampaigns() {
-            const url = `http://localhost:8080/api/imaginecx/campaigns`;
+        getChannelTypes() {
+            const url = `http://localhost:8080/api/imaginecx/channelTypes`;
             axios
                 .get(url)
                 .then((result) => {
@@ -106,36 +102,33 @@ export default {
                     this.error = err.message
                 })
         },
-        getCampaignId(id_campaign) {
+        getChannelTypeId(id_channeltype) {
 
-            const url = `http://localhost:8080/api/imaginecx/campaigns/${id_campaign}`;
+            const url = `http://localhost:8080/api/imaginecx/channelTypes/${id_channeltype}`;
             axios
                 .get(url)
                 .then((result) => {
                     this.id = result.data.all.id;
                     this.name = result.data.all.lookupName;
-                    this.type = result.data.all.folder.lookupName;
-                    this.cost = `Costo: ${result.data.all.actualCost.value}`
-                    this.created = `Fecha Creación: ${result.data.all.createdTime}`;
+                    this.monitoreo = `Monitoreo: ${result.data.all.attributes.monitoring}`;
+                    this.visibility = `Visibilidad: ${result.data.all.contactVisibility}`;
                 })
                 .catch((err) => {
                     if (err.response.status === 404) {
-                        this.error = `La campaña ${this.campaign.id} no se encuentra registrada`
+                        this.error = `El canal ${this.channeltype.id} no se encuentra registrado`
                     }
                 })
         },
         clearValues() {
             this.name= ""
-            this.created= ""
-            this.type= ""
-            this.cost= ""
-            this.error= ""
+            this.monitoreo= ""
+            this.visibility= ""
             this.id= ""
         }
     },
     created() {
-        this.getCampaigns();
-        document.title = 'Campaigns';
+        this.getChannelTypes();
+        document.title = 'ChannelTypes';
     }
 }
 

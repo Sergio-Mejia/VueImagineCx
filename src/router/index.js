@@ -12,6 +12,7 @@ import updateIncident from '../components/incidents/updateIncident.vue'
 import messageBases from '../components/messageBases/messageBases'
 import getOrganizations from '../components/organizations/getOrganizations'
 import deleteUpdateO from '../components/organizations/deleteUpdate'
+import channeltypes from '../components/channel/channelTypes'
 
 const routes = [
   {
@@ -78,6 +79,11 @@ const routes = [
     path: '/Organizations',
     name: 'deleteUpdateO',
     component: deleteUpdateO
+  },
+  {
+    path: '/channels',
+    name: 'channeltypes',
+    component: channeltypes
   },
 ]
 

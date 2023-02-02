@@ -61,7 +61,6 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ item.lookupName }}</h5>
-                        <p class="card-text">{{ item.createdTime }}</p>
                     </div>
                 </div>
             </div>
