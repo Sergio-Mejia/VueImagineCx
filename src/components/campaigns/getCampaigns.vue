@@ -15,7 +15,7 @@
                                 <button class="button-list" data-bs-toggle="modal" data-bs-target="#modalcampaign"
                                     v-on:click="getCampaignId(item.id)" @click="clearValues">
                                     <svg height="20px" width="20px" viewBox="0 0 24 24" fill="none"
-                                        xmlns="../assets/more.svg" stroke="#000000">
+                                        xmlns="http://www.w3.org/2000/svg" stroke="#000000">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
                                         </g>

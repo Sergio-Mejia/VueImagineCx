@@ -11,6 +11,9 @@ export default {
   name: 'Imagine',
   props: {
     msg: String
+  },
+  created(){
+    document.title = "Home"
   }
 }
 </script>
